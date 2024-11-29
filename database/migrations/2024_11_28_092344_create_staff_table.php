@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('level');
             $table->unsignedInteger('level')->default(3)->comment = 'staff:3,manager:4';
             $table->rememberToken();
             $table->timestamps();

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\LoginRequest;
+use App\Http\Requests\Admin\StaffRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -112,8 +114,18 @@ class UserController extends Controller
             return response()->json(["Update profile error."]);
         }
     }
-    public function staffCreate(Request $request)
+    public function staffCreate(StaffRequest $request)
     {
-        return response()->json([$request]);
+        $data = $request->all();
+        if(Staff::create($data)){
+            return response()->json(["Create Staff success."]);
+        }else{
+            return response()->json(["Create Staff error."]);
+        }
     }
+    public function staffList(){
+        $data = Staff::all();
+        return response()->json([$data]);
+    }
+    
 }
