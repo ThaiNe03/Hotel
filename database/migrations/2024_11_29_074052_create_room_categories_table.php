@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('children');
             $table->integer('size');
             $table->string('image')->nullable();
-            $table->integer('status');
+            $table->integer('status')->comment = '1:hoạt động 0:tạm khóa';
             $table->timestamps();
         });
     }

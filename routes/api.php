@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\HTTP\Controllers\Admin\UserController;
+use App\HTTP\Controllers\Admin\CateRoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +24,18 @@ Route::post('/admin/login',[UserController::class,'loginAdmin']);
 // Admin
 Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('/logout',[UserController::class,'logout']);
+    // Profile
     Route::get('/profile',[UserController::class,'index']);
-    Route::get('/list-staff',[UserController::class,'staffList']);
     Route::post('/update',[UserController::class,'updateAdmin']);
+    // Staff
+    Route::get('/list-staff',[UserController::class,'staffList']);
     Route::post('/create-staff',[UserController::class,'staffCreate']);
-    Route::post('/create-cate-room',[UserController::class,'cateRoomCreate']);
+    // Category room
+    Route::post('/create-cate-room',[CateRoomController::class,'store']);
+    Route::get('/edit-cate-room/{id}',[CateRoomController::class,'edit']);
+    Route::post('/edit-cate-room/{id}',[CateRoomController::class,'update']);
+    // Service
+    
 });
 // Staff
 Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
