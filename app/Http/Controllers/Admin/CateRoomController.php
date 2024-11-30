@@ -11,7 +11,8 @@ class CateRoomController extends Controller
 {
     public function index()
     {
-        //
+        $data = RoomType::all();
+        return response()->json([$data]);
     }
     public function create()
     {
@@ -47,6 +48,10 @@ class CateRoomController extends Controller
     }
     public function destroy(string $id)
     {
-        //
+        if(RoomType::where('id',$id)->delete()){
+            return response()->json(["Delete Room type success."]);
+        }else{
+            return response()->json(["Delete Room type error."]);
+        }
     }
 }

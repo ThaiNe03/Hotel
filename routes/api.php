@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\HTTP\Controllers\Admin\UserController;
 use App\HTTP\Controllers\Admin\CateRoomController;
+use App\HTTP\Controllers\Admin\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +31,17 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     // Staff
     Route::get('/list-staff',[UserController::class,'staffList']);
     Route::post('/create-staff',[UserController::class,'staffCreate']);
+    Route::delete('/delete-staff/{id}',[UserController::class,'destroy']);
     // Category room
+    Route::get('/list-cate-room',[CateRoomController::class,'index']);
     Route::post('/create-cate-room',[CateRoomController::class,'store']);
     Route::get('/edit-cate-room/{id}',[CateRoomController::class,'edit']);
     Route::post('/edit-cate-room/{id}',[CateRoomController::class,'update']);
+    Route::delete('/delete-cate-room/{id}',[CateRoomController::class,'destroy']);
     // Service
-    
+    Route::get('/list-service',[ServiceController::class,'index']);
+    Route::post('/create-service',[ServiceController::class,'store']);
+    Route::delete('/delete-service/{id}',[ServiceController::class,'destroy']);
 });
 // Staff
 Route::prefix('staff')->middleware('auth:sanctum')->group(function () {

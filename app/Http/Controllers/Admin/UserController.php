@@ -41,7 +41,11 @@ class UserController extends Controller
     }
     public function destroy(string $id)
     {
-        //
+        if(Staff::where('id',$id)->delete()){
+            return response()->json(["Delete Staff success."]);
+        }else{
+            return response()->json(["Delete Staff error."]);
+        }
     }
     public function logout(){
         auth()->user()->tokens()->delete();
@@ -127,5 +131,4 @@ class UserController extends Controller
         $data = Staff::all();
         return response()->json([$data]);
     }
-    
 }
