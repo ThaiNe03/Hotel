@@ -16,7 +16,7 @@ class UserController extends Controller
     public $successStatus = 200;
     public function index()
     {
-        $data = Auth::user();
+        $data = Auth::guard('user')->user();
         return response()->json([$data]);
     }
     public function create()
@@ -60,7 +60,15 @@ class UserController extends Controller
     }
     protected function doLogin($attempt)
     {
-        if (Auth::attempt($attempt)) {
+        if (Auth::guard('web')->attempt($attempt)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    protected function doLogin2($attempt)
+    {
+        if (Auth::guard('staff')->attempt($attempt)) {
             return true;
         } else {
             return false;
@@ -116,6 +124,38 @@ class UserController extends Controller
             return response()->json(["Update profile success."]);
         }else{
             return response()->json(["Update profile error."]);
+        }
+    }
+    public function loginStaff(loginRequest $request)
+    {
+        $login = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        if ($this->doLogin2($login)) {
+            $staff = Auth::guard('staff')->user();
+
+            // Kiểm tra level nếu cần
+            if ($staff->level == 3) {
+                $token = $staff->createToken('authToken')->plainTextToken;
+                return response()->json([
+                    'success' => 'success',
+                    'token' => $token,
+                    'type_token' => 'Bearer',
+                    'Auth' => $staff,
+                ], 200);
+            } else {
+                return response()->json([
+                    'response' => 'error',
+                    'errors' => ['errors' => 'Unauthorized access level'],
+                ], 403); // Forbidden
+            }
+        } else {
+            return response()->json([
+                    'response' => 'error',
+                    'errors' => ['errors' => 'Invalid email or password'],
+                ], 401);
         }
     }
     public function staffCreate(StaffRequest $request)
