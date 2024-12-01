@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\HTTP\Controllers\Admin\UserController;
 use App\HTTP\Controllers\Admin\CateRoomController;
 use App\HTTP\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Staff\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,11 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
 });
 // Staff
 Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
-    
+    // Room
+
 });
+Route::get('/list-room', [RoomController::class, 'getData']);
+Route::post('/create-room',[RoomController::class, 'store']);
+Route::put('/update-room',[RoomController::class, 'update']);
+Route::delete('/delete-room/{id}', [RoomController::class, 'destroy']);
 

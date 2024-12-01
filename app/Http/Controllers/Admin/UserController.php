@@ -74,14 +74,14 @@ class UserController extends Controller
             'level' => 1
         ];
         if ($this->doLogin($login)) {
-            $user = Auth::user(); 
+            $user = Auth::user();
             $token = $user->createToken('authToken')->plainTextToken;
             return response()->json([
                     'success' => 'success',
                     'token' => $token,
                     'type_token' => 'Bearer',
                     'Auth' => Auth::user()
-                ], 
+                ],
                 $this->successStatus
             );
         } else {
@@ -89,7 +89,7 @@ class UserController extends Controller
                     'response' => 'error',
                     'errors' => ['errors' => 'invalid email or password'],
                 ],
-            $this->successStatus); 
+            $this->successStatus);
         }
     }
     public function updateAdmin(UpdateUserRequest $request)
