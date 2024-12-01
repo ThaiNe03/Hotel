@@ -48,10 +48,10 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
 Route::post('/staff/login',[UserController::class,'loginStaff']);
 Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     // Room
-
+    Route::get('/list-room', [RoomController::class, 'getData']);
+    Route::post('/create-room',[RoomController::class, 'store']);
+    Route::put('/update-room',[RoomController::class, 'update']);
+    Route::delete('/delete-room/{id}', [RoomController::class, 'destroy']);
 });
-Route::get('/list-room', [RoomController::class, 'getData']);
-Route::post('/create-room',[RoomController::class, 'store']);
-Route::put('/update-room',[RoomController::class, 'update']);
-Route::delete('/delete-room/{id}', [RoomController::class, 'destroy']);
+
 

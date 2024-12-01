@@ -24,7 +24,7 @@ class RoomRequest extends FormRequest
         return [
             'room_name'        => 'required|min:3',
             'price'             => 'required|numeric|min:0',
-            'id_room_categories'          => 'required|exists:loai_phongs,id',
+            'id_room_categories'=> 'required|exists:room_categories,id',
             'status'            => 'required|boolean',
         ];
     }
