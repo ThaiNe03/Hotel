@@ -44,6 +44,7 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::delete('/delete-service/{id}',[ServiceController::class,'destroy']);
 });
 // Staff
+Route::post('/staff/login',[UserController::class,'loginStaff']);
 Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     
 });
