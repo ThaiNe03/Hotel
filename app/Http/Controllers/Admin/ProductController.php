@@ -4,59 +4,54 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\ProductRequest;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        //
+        $data = Product::all();
+        return response()->json([$data]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $data = $request->all();
+        if(Product::create($data)){
+            return response()->json(["Create product success."]);
+        }else{
+            return response()->json(["Create product error."]);
+        }
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $data = Product::find($id);
+        return response()->json([$data]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
-        //
+        $data = $request->all();
+        $product = Product::findOrFail($id);
+        if($product->update($data)){
+            return response()->json(["Edit product success."]);
+        }else{
+            return response()->json(["Edit product error."]);
+        }
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        if(Product::where('id',$id)->delete()){
+            return response()->json(["Delete product success."]);
+        }else{
+            return response()->json(["Delete product error."]);
+        }
     }
 }

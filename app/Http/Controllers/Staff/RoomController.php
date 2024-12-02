@@ -65,4 +65,13 @@ class RoomController extends Controller
             ]);
         }
     }
+    public function logout(){
+        auth()->user()->tokens()->delete();
+        return response()->json(
+            [
+                'message'=>'success'
+            ],
+            200
+        );
+    }
 }

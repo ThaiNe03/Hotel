@@ -2,9 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+// Admin
 use App\HTTP\Controllers\Admin\UserController;
 use App\HTTP\Controllers\Admin\CateRoomController;
 use App\HTTP\Controllers\Admin\ServiceController;
+use App\HTTP\Controllers\Admin\ProductController;
+
+// Staff
 use App\Http\Controllers\Staff\RoomController;
 
 /*
@@ -43,10 +48,17 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('/list-service',[ServiceController::class,'index']);
     Route::post('/create-service',[ServiceController::class,'store']);
     Route::delete('/delete-service/{id}',[ServiceController::class,'destroy']);
+    // Product
+    Route::get('/list-product',[ProductController::class,'index']);
+    Route::post('/create-product',[ProductController::class,'store']);
+    Route::get('/edit-product/{id}',[ProductController::class,'edit']);
+    Route::post('/edit-product/{id}',[ProductController::class,'update']);
+    Route::delete('/delete-product/{id}',[ProductController::class,'destroy']);
 });
 // Staff
 Route::post('/staff/login',[UserController::class,'loginStaff']);
 Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
+    Route::get('/logout',[RoomController::class,'logout']);
     // Room
     Route::get('/list-room', [RoomController::class, 'getData']);
     Route::post('/create-room',[RoomController::class, 'store']);
