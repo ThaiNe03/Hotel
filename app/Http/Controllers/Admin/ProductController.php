@@ -54,4 +54,26 @@ class ProductController extends Controller
             return response()->json(["Delete product error."]);
         }
     }
+    public function change(Request $request)
+    {
+        $product = Product::find($request->id);
+        if($product) {
+            if($product->status == 1) {
+                $product->status = 1;
+            } else {
+                $product->status = 0;
+            }
+            $product->save();
+
+            return response()->json([
+                'status' => true,
+                'message' => "Change status success!"
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => "Change status error!"
+            ]);
+        }
+    }
 }
