@@ -8,9 +8,10 @@ use App\HTTP\Controllers\Admin\UserController;
 use App\HTTP\Controllers\Admin\CateRoomController;
 use App\HTTP\Controllers\Admin\ServiceController;
 use App\HTTP\Controllers\Admin\ProductController;
-
+use App\Http\Controllers\Staff\BlogController;
 // Staff
 use App\Http\Controllers\Staff\RoomController;
+use App\Models\Blog;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +69,8 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::get('/list-product',[ProductController::class,'index']);
     Route::put('/change-status', [ProductController::class, 'change']);
     // Blog
-    Route::get('/list-prodbloguct',[ProductController::class,'index']);
+    Route::get('/list-blog',[BlogController::class,'index']);
+    Route::post('/create-blog',[BlogController::class,'store']);
 
 });
 
