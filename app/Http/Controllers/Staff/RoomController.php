@@ -32,6 +32,11 @@ class RoomController extends Controller
             ]);
         }
     }
+    public function edit(string $id)
+    {
+        $data = Room::find($id);
+        return response()->json([$data]);
+    }
     public function update(Request $request)
     {
         $data   = $request->all();
