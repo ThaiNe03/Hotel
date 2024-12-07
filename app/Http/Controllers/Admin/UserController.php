@@ -74,7 +74,7 @@ class UserController extends Controller
             return false;
         }
     }
-    public function loginAdmin(loginRequest $request)
+    public function loginAdmin(LoginRequest $request)
     {
         $login = [
             'email' => $request->email,
@@ -126,7 +126,7 @@ class UserController extends Controller
             return response()->json(["Update profile error."]);
         }
     }
-    public function loginStaff(loginRequest $request)
+    public function loginStaff(LoginRequest $request)
     {
         $login = [
             'email' => $request->email,

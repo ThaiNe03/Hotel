@@ -9,9 +9,13 @@ use App\HTTP\Controllers\Admin\CateRoomController;
 use App\HTTP\Controllers\Admin\ServiceController;
 use App\HTTP\Controllers\Admin\ProductController;
 use App\Http\Controllers\Staff\BlogController;
+
 // Staff
 use App\Http\Controllers\Staff\RoomController;
 use App\Models\Blog;
+
+// Main
+use App\Http\Controllers\Main\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,9 +79,17 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::post('/create-blog',[BlogController::class,'store']);
 });
 
-//Main
+Route::post('/register', [CustomerController::class, 'register']);
+Route::post('/login', [CustomerController::class, 'login']);
+
+// Main
 Route::get('/list-room', [RoomController::class, 'getData']);
 Route::get('/edit-room/{id}',[RoomController::class,'edit']);
 Route::get('/list-service',[ServiceController::class,'index']);
 Route::get('/list-product',[ProductController::class,'index']);
 
+// Main sanctum
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/logout',[CustomerController::class,'logout']);
+    Route::post('/booking',[CustomerController::class,'booking']);
+});
