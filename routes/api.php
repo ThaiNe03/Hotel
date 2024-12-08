@@ -16,6 +16,7 @@ use App\Models\Blog;
 
 // Main
 use App\Http\Controllers\Main\CustomerController;
+use App\Http\Controllers\RentalDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,12 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::get('/edit-blog/{id}',[BlogController::class,'edit']);
     Route::put('/edit-blog/{id}',[BlogController::class,'update']);
     Route::delete('/delete-blog',[BlogController::class,'destroy']);
+    // Chi tiết thuê phòng
+    Route::get('/list-rental-detail', [RentalDetailController::class, 'getData']);
+    Route::post('/create-rental-detail', [RentalDetailController::class, 'store']);
+    Route::get('/edit-rental-detail/{id}', [RentalDetailController::class, 'edit']);
+    Route::get('/edit-rental-detail/{id}', [RentalDetailController::class, 'update']);
+    Route::get('/delete-rental-detail', [RentalDetailController::class, 'destroy']);
 });
 
 Route::post('/register', [CustomerController::class, 'register']);
