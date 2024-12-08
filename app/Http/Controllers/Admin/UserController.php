@@ -74,7 +74,11 @@ class UserController extends Controller
             return false;
         }
     }
+<<<<<<< HEAD
     public function loginAdmin(LoginRequest $request)
+=======
+    public function loginAdmin(loginRequest $request)
+>>>>>>> 3de6771 (Initial commit)
     {
         $login = [
             'email' => $request->email,
@@ -126,7 +130,11 @@ class UserController extends Controller
             return response()->json(["Update profile error."]);
         }
     }
+<<<<<<< HEAD
     public function loginStaff(LoginRequest $request)
+=======
+    public function loginStaff(loginRequest $request)
+>>>>>>> 3de6771 (Initial commit)
     {
         $login = [
             'email' => $request->email,

@@ -17,9 +17,12 @@ class RoomType extends Model
         'image',
         'status'
     ];
+<<<<<<< HEAD
     public function rooms()
     {
         return $this->hasMany(Room::class, 'id_room_categories');
     }
 
+=======
+>>>>>>> 3de6771 (Initial commit)
 }
