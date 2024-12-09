@@ -70,7 +70,7 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::get('/edit-blog/{id}',[BlogController::class,'edit']);
     Route::put('/edit-blog/{id}',[BlogController::class,'update']);
     Route::delete('/delete-blog',[BlogController::class,'destroy']);
-    // Chi tiết thuê phòng
+    // Rental room detail
     Route::get('/list-rental-detail', [RentalDetailController::class, 'getData']);
     Route::post('/create-rental-detail', [RentalDetailController::class, 'store']);
     Route::get('/edit-rental-detail/{id}', [RentalDetailController::class, 'edit']);

@@ -16,7 +16,7 @@ class UserController extends Controller
     public $successStatus = 200;
     public function index()
     {
-        $data = Auth::guard('user')->user();
+        $data = Auth::user();
         return response()->json([$data]);
     }
     public function create()
@@ -60,7 +60,7 @@ class UserController extends Controller
     }
     protected function doLogin($attempt)
     {
-        if (Auth::guard('web')->attempt($attempt)) {
+        if (Auth::guard('user')->attempt($attempt)) {
             return true;
         } else {
             return false;
@@ -74,11 +74,7 @@ class UserController extends Controller
             return false;
         }
     }
-<<<<<<< HEAD
     public function loginAdmin(LoginRequest $request)
-=======
-    public function loginAdmin(loginRequest $request)
->>>>>>> 3de6771 (Initial commit)
     {
         $login = [
             'email' => $request->email,
@@ -130,11 +126,7 @@ class UserController extends Controller
             return response()->json(["Update profile error."]);
         }
     }
-<<<<<<< HEAD
     public function loginStaff(LoginRequest $request)
-=======
-    public function loginStaff(loginRequest $request)
->>>>>>> 3de6771 (Initial commit)
     {
         $login = [
             'email' => $request->email,
