@@ -60,7 +60,7 @@ class UserController extends Controller
     }
     protected function doLogin($attempt)
     {
-        if (Auth::guard('user')->attempt($attempt)) {
+        if (Auth::guard('web')->attempt($attempt)) {
             return true;
         } else {
             return false;

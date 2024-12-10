@@ -16,16 +16,12 @@ class Room extends Model
         'id_room_categories',
         'more_service',
     ];
-<<<<<<< HEAD
     public function roomCategory()
     {
         return $this->belongsTo(RoomType::class, 'id_room_categories');
     }
-
     public function bookings()
     {
         return $this->hasMany(RentalRoom::class, 'room_id');
     }
-=======
->>>>>>> 3de6771 (Initial commit)
 }
