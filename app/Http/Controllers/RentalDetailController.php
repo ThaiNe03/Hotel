@@ -15,18 +15,7 @@ class RentalDetailController extends Controller
         ]);
     }
     public function store(RentalDatailRequest $request){
-        $data = $request->all();
-        if(RentalDetail::create($data))
-        {
-            return response()->json([
-                'status'    =>  true,
-                'message'   =>  'Success create!'
-            ]);
-        } else {
-            return response()->json([
-                'status'    =>  false,
-                'message'   =>  'Error'
-            ]);$today  =   Carbon::today();
+        $today  =   Carbon::today();
 
             $ngayCuoiNam    = Carbon::now()->endOfMonth();
 
@@ -37,10 +26,10 @@ class RentalDetailController extends Controller
                         'date'          =>  $today,
                     ],
                     [
-                        'id_room'      =>  $request->id,
-                        'tinh_trang'    =>  1,
-                        'date'     =>  $today,
-                        'note'          => $request -> note,
+                        'id_room'       =>  $request->id,
+                        'status'        =>  1,
+                        'date'          =>  $today,
+                        'note'          =>  $request -> note,
                     ]
                 );
                 $today->addDay();
@@ -51,7 +40,6 @@ class RentalDetailController extends Controller
                 'message'   =>  'Crete success!',
             ]);
         }
-    }
     public function edit(string $id)
     {
         $data = RentalDetail::find($id);
