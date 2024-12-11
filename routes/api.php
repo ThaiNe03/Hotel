@@ -43,6 +43,9 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('/list-service',[ServiceController::class,'index']);
     Route::post('/create-service',[ServiceController::class,'store']);
     Route::delete('/delete-service/{id}',[ServiceController::class,'destroy']);
+    // Category product
+    Route::post('/create-cate-product',[ProductController::class,'storeCate']);
+    Route::delete('/delete-cate-product/{id}',[ProductController::class,'destroyCate']);
     // Product
     Route::get('/list-product',[ProductController::class,'index']);
     Route::post('/create-product',[ProductController::class,'store']);
