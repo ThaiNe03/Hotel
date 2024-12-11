@@ -19,7 +19,6 @@ class RoomController extends Controller
     public function store(RoomRequest $request)
     {
         $data = $request->all();
-<<<<<<< HEAD
         if(Room::create($data))
         {
             return response()->json([
@@ -37,21 +36,18 @@ class RoomController extends Controller
     {
         $data = Room::find($id);
         return response()->json([$data]);
-=======
-        return response()->json([$data]);
-        // if(Room::create($data))
-        // {
-        //     return response()->json([
-        //         'status'    =>  true,
-        //         'message'   =>  'Đã tạo mới phòng thành công!'
-        //     ]);
-        // } else {
-        //     return response()->json([
-        //         'status'    =>  false,
-        //         'message'   =>  'Lỗi'
-        //     ]);
-        // }
->>>>>>> 3de6771 (Initial commit)
+        if(Room::create($data))
+        {
+            return response()->json([
+                'status'    =>  true,
+                'message'   =>  'Đã tạo mới phòng thành công!'
+            ]);
+        } else {
+            return response()->json([
+                'status'    =>  false,
+                'message'   =>  'Lỗi'
+            ]);
+        }
     }
     public function update(Request $request)
     {

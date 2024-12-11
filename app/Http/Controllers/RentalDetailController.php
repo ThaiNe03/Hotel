@@ -9,26 +9,26 @@ use Carbon\Carbon;
 class RentalDetailController extends Controller
 {
     public function store(RentalDatailRequest $request){
-            $today  =   Carbon::today();
-            $lastDay    = Carbon::now()->endOfMonth();
-            while($today <= $lastDay) {
-                RentalDetail::firstOrCreate(
-                    [
-                        'id_room'       =>  $request->id,
-                        'date'          =>  $today,
-                    ],
-                    [
-                        'id_room'   =>  $request->id,
-                        'status'    =>  1,
-                        'date'      =>  $today,
-                        'note'      =>  $request -> note,
-                    ]
-                );
-                $today->addDay();
-            }
-            return response()->json([
-                'status'    =>  true,
-                'message'   =>  'Crete success!',
-            ]);
+        $today      = Carbon::today();
+        $lastDay    = Carbon::now()->endOfMonth();
+        while($today <= $lastDay) {
+            RentalDetail::firstOrCreate(
+                [
+                    'id_room'       =>  $request->id_room,
+                    'date'          =>  $today,
+                ],
+                [
+                    'id_room'   =>  $request->id_room,
+                    'status'    =>  1,
+                    'date'      =>  $today,
+                    'note'      =>  $request -> note,
+                ]
+            );
+            $today->addDay();
         }
+        return response()->json([
+            'status'    =>  true,
+            'message'   =>  'Crete success!',
+        ]);
+    }
 }
