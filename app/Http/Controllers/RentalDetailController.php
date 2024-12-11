@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Staff\RentalDatailRequest;
 use App\Models\RentalDetail;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class RentalDetailController extends Controller
 {
@@ -25,6 +26,29 @@ class RentalDetailController extends Controller
             return response()->json([
                 'status'    =>  false,
                 'message'   =>  'Error'
+            ]);$today  =   Carbon::today();
+
+            $ngayCuoiNam    = Carbon::now()->endOfMonth();
+
+            while($today <= $ngayCuoiNam) {
+                RentalDetail::firstOrCreate(
+                    [
+                        'id_room'       =>  $request->id,
+                        'date'          =>  $today,
+                    ],
+                    [
+                        'id_room'      =>  $request->id,
+                        'tinh_trang'    =>  1,
+                        'date'     =>  $today,
+                        'note'          => $request -> note,
+                    ]
+                );
+                $today->addDay();
+            }
+
+            return response()->json([
+                'status'    =>  true,
+                'message'   =>  'Crete success!',
             ]);
         }
     }

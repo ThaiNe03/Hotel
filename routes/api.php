@@ -79,6 +79,8 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::get('/edit-rental-detail/{id}', [RentalDetailController::class, 'edit']);
     Route::get('/edit-rental-detail/{id}', [RentalDetailController::class, 'update']);
     Route::get('/delete-rental-detail', [RentalDetailController::class, 'destroy']);
+    // Tạo đặt phòng
+    
 });
 
 Route::post('/register', [CustomerController::class, 'register']);
