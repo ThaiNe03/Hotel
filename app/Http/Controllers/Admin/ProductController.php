@@ -109,4 +109,9 @@ class ProductController extends Controller
             ]);
         }
     }
+    public function listCate()
+    {
+        $data = ProductCate::all();
+        return response()->json([$data]);
+    }
 }

@@ -8,12 +8,6 @@ use Carbon\Carbon;
 
 class RentalDetailController extends Controller
 {
-    public function index(){
-        $data = RentalDetail::all();
-        return response()->json([
-            'blog'  =>  $data
-        ]);
-    }
     public function store(RentalDatailRequest $request){
         $data = $request->all();
         if(RentalDetail::create($data))
@@ -28,19 +22,19 @@ class RentalDetailController extends Controller
                 'message'   =>  'Error'
             ]);$today  =   Carbon::today();
 
-            $ngayCuoiNam    = Carbon::now()->endOfMonth();
+            $lastDay    = Carbon::now()->endOfMonth();
 
-            while($today <= $ngayCuoiNam) {
+            while($today <= $lastDay) {
                 RentalDetail::firstOrCreate(
                     [
                         'id_room'       =>  $request->id,
                         'date'          =>  $today,
                     ],
                     [
-                        'id_room'      =>  $request->id,
-                        'tinh_trang'    =>  1,
-                        'date'     =>  $today,
-                        'note'          => $request -> note,
+                        'id_room'   =>  $request->id,
+                        'status'    =>  1,
+                        'date'      =>  $today,
+                        'note'      =>  $request -> note,
                     ]
                 );
                 $today->addDay();
@@ -51,50 +45,5 @@ class RentalDetailController extends Controller
                 'message'   =>  'Crete success!',
             ]);
         }
-    }
-    public function edit(string $id)
-    {
-        $data = RentalDetail::find($id);
-        return response()->json([$data]);
-    }
-    public function update(RentalDatailRequest $request){
-        $data = $request->all();
-
-        if(RentalDetail::find($request->id)->update($data))
-        {
-            return response()->json([
-                'status'    =>  true,
-                'message'   =>  'Update success!'
-            ]);
-        } else {
-            return response()->json([
-                'status'    =>  false,
-                'message'   =>  'Error'
-            ]);
-        }
-    }
-    public function destroy($id)
-    {
-        if(RentalDetail::find($id)->delete())
-        {
-            return response()->json([
-                'status'    =>  true,
-                'message'   =>  'Delete success!'
-            ]);
-        } else {
-            return response()->json([
-                'status'    =>  false,
-                'message'   =>  'Error'
-            ]);
-        }
-    }
-    public function logout(){
-        auth()->user()->tokens()->delete();
-        return response()->json(
-            [
-                'message'=>'success'
-            ],
-            200
-        );
     }
 }
