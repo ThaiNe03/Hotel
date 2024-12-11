@@ -22,15 +22,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->all();
-        $file = $request->image;
-
-        if(!empty($file)){
-            $data['image'] = $file->getClientOriginalName();
-        }
         if(Product::create($data)){
-            if(!empty($file)){
-                $file->move('upload/cateproduct/image',$file->getClientOriginalName());
-            }
             return response()->json(["Create product success."]);
         }else{
             return response()->json(["Create product error."]);

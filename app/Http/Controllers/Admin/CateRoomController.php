@@ -21,15 +21,7 @@ class CateRoomController extends Controller
     public function store(CateRoomRequest $request)
     {
         $data = $request->all();
-        $file = $request->image;
-
-        if(!empty($file)){
-            $data['image'] = $file->getClientOriginalName();
-        }
         if(RoomType::create($data)){
-            if(!empty($file)){
-                $file->move('upload/cateroom/image',$file->getClientOriginalName());
-            }
             return response()->json(["Create Room type success."]);
         }else{
             return response()->json(["Create Room type error."]);
