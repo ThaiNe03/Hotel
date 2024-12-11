@@ -8,26 +8,15 @@ use App\HTTP\Controllers\Admin\UserController;
 use App\HTTP\Controllers\Admin\CateRoomController;
 use App\HTTP\Controllers\Admin\ServiceController;
 use App\HTTP\Controllers\Admin\ProductController;
-use App\Http\Controllers\Staff\BlogController;
 
 // Staff
+use App\Http\Controllers\Staff\BlogController;
 use App\Http\Controllers\Staff\RoomController;
 use App\Models\Blog;
 
 // Main
 use App\Http\Controllers\Main\CustomerController;
 use App\Http\Controllers\RentalDetailController;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
@@ -81,7 +70,7 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::get('/edit-blog/{id}',[BlogController::class,'edit']);
     Route::put('/edit-blog/{id}',[BlogController::class,'update']);
     Route::delete('/delete-blog',[BlogController::class,'destroy']);
-    // Chi tiết thuê phòng
+    // Rental room detail
     Route::get('/list-rental-detail', [RentalDetailController::class, 'getData']);
     Route::post('/create-rental-detail', [RentalDetailController::class, 'store']);
     Route::get('/edit-rental-detail/{id}', [RentalDetailController::class, 'edit']);

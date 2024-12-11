@@ -16,7 +16,7 @@ class UserController extends Controller
     public $successStatus = 200;
     public function index()
     {
-        $data = Auth::guard('user')->user();
+        $data = Auth::user();
         return response()->json([$data]);
     }
     public function create()

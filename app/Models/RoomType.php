@@ -21,5 +21,4 @@ class RoomType extends Model
     {
         return $this->hasMany(Room::class, 'id_room_categories');
     }
-
 }
