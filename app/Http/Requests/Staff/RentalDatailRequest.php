@@ -22,8 +22,7 @@ class RentalDatailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_room'  => 'required|exists:rooms,id',
-            'status'   => 'required|boolean'
+            'id_room'  => 'required|exists:rooms,id'
         ];
     }
     public function messages()
@@ -31,7 +30,6 @@ class RentalDatailRequest extends FormRequest
         return [
             'id_room.required'  => 'Id phòng không được để trống',
             'id_room.exists'    => 'Id phòng không tồn tại',
-            'status.*'          => 'Tình trạng không được để trống',
         ];
     }
 }

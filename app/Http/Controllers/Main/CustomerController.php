@@ -56,7 +56,8 @@ class CustomerController extends Controller
             $this->successStatus);
         }
     }
-    public function logout(){
+    public function logout()
+    {
       auth()->user()->tokens()->delete();
       return response()->json(
           [
@@ -64,5 +65,9 @@ class CustomerController extends Controller
           ],
           200
       );
+    }
+    public function booking(Request $request)
+    {
+        
     }
 }
