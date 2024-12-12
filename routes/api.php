@@ -8,7 +8,7 @@ use App\HTTP\Controllers\Admin\UserController;
 use App\HTTP\Controllers\Admin\CateRoomController;
 use App\HTTP\Controllers\Admin\ServiceController;
 use App\HTTP\Controllers\Admin\ProductController;
-
+use App\Http\Controllers\InvoicesController;
 // Staff
 use App\Http\Controllers\Staff\BlogController;
 use App\Http\Controllers\Staff\RoomController;
@@ -76,6 +76,9 @@ Route::prefix('staff')->middleware('auth:sanctum')->group(function () {
     Route::delete('/delete-blog',[BlogController::class,'destroy']);
     // Rental room detail
     Route::post('/create-rental-detail', [RentalDetailController::class, 'store']);
+    // Invoices
+    Route::get('/list-invoices', [InvoicesController::class, 'index']);
+    Route::get('/change-invoices', [InvoicesController::class, 'change']);
 });
 
 Route::post('/register', [CustomerController::class, 'register']);
