@@ -88,7 +88,6 @@ Route::get('/list-service',[ServiceController::class,'index']);
 Route::get('/list-product',[ProductController::class,'index']);
 
 
-
 // Main sanctum
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/logout',[CustomerController::class,'logout']);
