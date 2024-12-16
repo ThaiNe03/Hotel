@@ -107,10 +107,10 @@ function Header() {
                   <li className="menu-item"><a href="about-us.html">Tiện ích &amp; Dịch vụ</a></li>                                      
                 </ul>
               </li>
-              <li className="menu-item menu-item-has-childrenmenu-item menu-item-has-children gdlr-normal-menu"><a href="room-classic-3-columns.html" className="sf-with-ul-pre">Phòng</a>
+              <li className="menu-item menu-item-has-childrenmenu-item menu-item-has-children gdlr-normal-menu"><a href="/room" className="sf-with-ul-pre">Phòng</a>
               </li>
-              <li className="menu-itemmenu-item gdlr-normal-menu"><a href="booking.html">Đặt lịch</a></li>
-              <li className="menu-item menu-item-has-childrenmenu-item menu-item-has-children gdlr-normal-menu"><a href="blog-full-with-right-sidebar.html" className="sf-with-ul-pre">Blog</a>
+              <li className="menu-itemmenu-item gdlr-normal-menu"><a href="/booking">Đặt lịch</a></li>
+              <li className="menu-item menu-item-has-childrenmenu-item menu-item-has-children gdlr-normal-menu"><a href="/blog" className="sf-with-ul-pre">Blog</a>
               </li><li className="menu-item">
                 <a href="menu.html">
                   Menu

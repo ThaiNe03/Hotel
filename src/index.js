@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import AboutUs from "./components/Page/AboutUs";
 import Room from "./components/Page/Room";
+import Booking from "./components/Page/Booking";
+import Blog from "./components/Page/Blog";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +19,8 @@ root.render(
       <Route index path="/" element={<Home />} />
       <Route index path="/about-us" element={<AboutUs />} />
       <Route index path="/room" element={<Room />} />
+      <Route index path="/booking" element={<Booking />} />
+      <Route index path="/blog" element={<Blog />} />
     </Routes>
   </App>
   </Router>
