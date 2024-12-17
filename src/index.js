@@ -1,29 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home";
-import AboutUs from "./components/Page/AboutUs";
 import Room from "./components/Page/Room";
 import Booking from "./components/Page/Booking";
 import Blog from "./components/Page/Blog";
+import Product from "./components/Page/Product";
+import Facility from "./components/Page/Facility";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-  <Router>
-  <App>
-    <Routes>
-      <Route index path="/" element={<Home />} />
-      <Route index path="/about-us" element={<AboutUs />} />
-      <Route index path="/room" element={<Room />} />
-      <Route index path="/booking" element={<Booking />} />
-      <Route index path="/blog" element={<Blog />} />
-    </Routes>
-  </App>
-  </Router>
+    <Router>
+      <App>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/facility" element={<Facility />} />
+          <Route path="/room" element={<Room />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/product" element={<Product />} />
+        </Routes>
+      </App>
+    </Router>
   </React.StrictMode>
 );
 
