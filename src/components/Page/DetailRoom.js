@@ -1,15 +1,15 @@
-// import { Link } from "react-router-dom";
-
 import axios from "axios";
 import React from "react";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function DetailRoom() {
+  const { id } = useParams();
   const [listRoom, setListRoom] = useState({});
-  const fetchDataRoom = async () => {
+  const fetchDataRoomNew = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8000/api/detail-room/1`,
+        `http://127.0.0.1:8000/api/detail-room/${id}`,
         {
           headers: {
             Accept: "application/json"
@@ -23,7 +23,7 @@ function DetailRoom() {
     }
   };
   useEffect(() => {
-    fetchDataRoom();
+    fetchDataRoomNew();
   }, []);
   return (
     <>
@@ -32,9 +32,7 @@ function DetailRoom() {
         <div className="gdlr-page-title-wrapper">
           <div className="gdlr-page-title-overlay" />
           <div className="gdlr-page-title-container container">
-            <h3 className="gdlr-page-title">
-              {listRoom.room_name} – {listRoom.room_category.room_type}
-            </h3>
+            <h3 className="gdlr-page-title">{listRoom.room_name}</h3>
           </div>
         </div>
         {/* is search */}
@@ -244,11 +242,7 @@ function DetailRoom() {
                           <div className="gdlr-room-thumbnail gdlr-single-room-thumbnail">
                             <img
                               decoding="async"
-                              src={
-                                listRoom.room_category.image
-                                  ? listRoom.room_category.image
-                                  : "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
-                              }
+                              src="/frontend/anh/1doi.png"
                               alt=""
                               width={750}
                               height={330}
@@ -256,8 +250,7 @@ function DetailRoom() {
                           </div>
                           <div className="gdlr-room-title-wrapper">
                             <h3 className="gdlr-room-title">
-                              {listRoom.room_name} –{" "}
-                              {listRoom.room_category.room_type}
+                              {listRoom.room_name}
                             </h3>
                             <div className="gdlr-room-price">
                               <span className="gdlr-head">Giá chỉ từ </span>
@@ -488,7 +481,7 @@ function DetailRoom() {
                                   <div className="gallery-item">
                                     <img
                                       decoding="async"
-                                      src="/frontend/images/dark/now-loading.gif"
+                                      src="/frontend/anh/1doi.png"
                                       alt=""
                                       width={150}
                                       height={150}

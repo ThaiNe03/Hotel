@@ -2,9 +2,11 @@
 
 import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Room() {
+  const navigate = useNavigate();
   const [listRoom, setListRoom] = useState([]);
   const fetchDataRoom = async () => {
     try {
@@ -22,6 +24,9 @@ function Room() {
   useEffect(() => {
     fetchDataRoom();
   }, []);
+  const handleDetailRoom = (id) => {
+    navigate(`/room/${id}`);
+  };
   return (
     <div>
       <div className="gdlr-page-title-wrapper">
@@ -48,7 +53,7 @@ function Room() {
                       console.log(room);
                       return (
                         <React.Fragment key={index}>
-                          <div className="four columns">
+                          <div className="four columns" onClick={() => {handleDetailRoom(room.id)}}>
                             <div className="gdlr-item gdlr-room-item gdlr-classic-room">
                               <div className="gdlr-ux gdlr-classic-room-ux">
                                 <div className="gdlr-room-thumbnail">
