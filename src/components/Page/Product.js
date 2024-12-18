@@ -1,14 +1,27 @@
-// import { Link } from "react-router-dom";
+import axios from "axios";
+import React from "react";
+import { useEffect, useState } from "react";
 
 function Product() {
+  const [listRoom, setListRoom] = useState([]);
+  const fetchDataRoom = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/list-product`, {
+        headers: {
+          Accept: "application/json"
+        }
+      });
+      console.log(response.data);
+      setListRoom(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchDataRoom();
+  }, []);
   return (
     <div>
-      <link
-        rel="stylesheet"
-        href="{{asset('frontend\css\menu.css')}}"
-        type="text/css"
-        media="all"
-      />
       <div className="gdlr-page-title-wrapper">
         <div className="gdlr-page-title-overlay" />
         <div className="gdlr-page-title-container container">
@@ -17,7 +30,68 @@ function Product() {
           </h1>
         </div>
       </div>
-      <section>
+      <div id="gdlr-header-substitute"></div>
+      <div className="content-wrapper">
+        <div className="gdlr-content">
+          <div className="with-sidebar-wrapper">
+            <section id="content-section-1">
+              <div className="section-container container">
+                <div
+                  className="room-item-wrapper type-classic"
+                  style={{ marginBottom: "30px" }}
+                >
+                  <div className="room-item-holder ">
+                    <div className="clear" />
+                    {listRoom.map((room, index) => {
+                      return (
+                        <React.Fragment key={index}>
+                          <div className="four columns">
+                            <div className="gdlr-item gdlr-room-item gdlr-classic-room">
+                              <div className="gdlr-ux gdlr-classic-room-ux">
+                                <div className="gdlr-room-thumbnail">
+                                  <img
+                                    src={
+                                      room.image
+                                        ? room.image
+                                        : "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
+                                    }
+                                    alt=""
+                                    width={700}
+                                    height={400}
+                                  />
+                                </div>
+                                <h3 className="gdlr-room-title">
+                                  {room.name}
+                                </h3>
+                                <div className="gdlr-hotel-room-info">
+                                  <div className="gdlr-room-price">
+                                    <span className="gdlr-head">Giá từ</span>
+                                    <span className="gdlr-tail">
+                                      {room.price.toLocaleString("vi-VN")} VNĐ
+                                    </span>
+                                  </div>
+                                  <div className="clear" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {(index + 1) % 3 === 0 && <div className="clear" />}
+                        </React.Fragment>
+                      );
+                    })}
+                    <div className="clear" />
+                  </div>
+                </div>
+                <div className="clear" />
+              </div>
+            </section>
+          </div>
+          {/* Below Sidebar Section*/}
+        </div>
+        {/* gdlr-content */}
+        <div className="clear" />
+      </div>
+      {/* <section>
         <div className="container center">
           <h2>Các món chính tại đây</h2>
           <p className="desc">
@@ -25,7 +99,6 @@ function Product() {
             nghề cực đỉnh.
           </p>
           <div className="grid-container">
-            @foreach ($data as $item)
             <div className="card">
               <img
                 className="card-img"
@@ -39,7 +112,6 @@ function Product() {
               </div>
               <div className="card-money">Giá: 850 $</div>
             </div>
-            @endforeach
             <div className="card">
               <img
                 className="card-img"
@@ -69,7 +141,7 @@ function Product() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

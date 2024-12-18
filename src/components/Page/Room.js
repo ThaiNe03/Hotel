@@ -1,6 +1,27 @@
 // import { Link } from "react-router-dom";
 
+import axios from "axios";
+import React from "react";
+import { useEffect, useState } from "react";
+
 function Room() {
+  const [listRoom, setListRoom] = useState([]);
+  const fetchDataRoom = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/list-room`, {
+        headers: {
+          Accept: "application/json"
+        }
+      });
+      console.log(response.data);
+      setListRoom(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchDataRoom();
+  }, []);
   return (
     <div>
       <div className="gdlr-page-title-wrapper">
@@ -11,7 +32,7 @@ function Room() {
         </div>
       </div>
       <div id="gdlr-header-substitute"></div>
-      {/* is search */}
+
       <div className="content-wrapper">
         <div className="gdlr-content">
           <div className="with-sidebar-wrapper">
@@ -23,400 +44,70 @@ function Room() {
                 >
                   <div className="room-item-holder ">
                     <div className="clear" />
-                    <div className="four columns">
-                      <div className="gdlr-item gdlr-room-item gdlr-classic-room">
-                        <div className="gdlr-ux gdlr-classic-room-ux">
-                          <div className="gdlr-room-thumbnail">
-                            <a href="#">
-                              <img
-                                src="anh\1doi.png"
-                                alt=""
-                                width={700}
-                                height={400}
-                              />
-                            </a>
+                    {listRoom.map((room, index) => {
+                      console.log(room);
+                      return (
+                        <React.Fragment key={index}>
+                          <div className="four columns">
+                            <div className="gdlr-item gdlr-room-item gdlr-classic-room">
+                              <div className="gdlr-ux gdlr-classic-room-ux">
+                                <div className="gdlr-room-thumbnail">
+                                  <img
+                                    src={
+                                      room.room_category.image
+                                        ? room.room_category.image
+                                        : "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
+                                    }
+                                    alt=""
+                                    width={700}
+                                    height={400}
+                                  />
+                                </div>
+                                <h3 className="gdlr-room-title">
+                                  {room.room_name} -{" "}
+                                  {room.room_category.room_type}
+                                </h3>
+                                <div className="gdlr-hotel-room-info">
+                                  <div className="gdlr-room-info">
+                                    <i className="fa fa-check-square-o icon-check" />
+                                    <span className="gdlr-head">Giường</span>
+                                    <span className="gdlr-tail">
+                                      1 giường đôi / 2 giường đơn
+                                    </span>
+                                  </div>
+                                  <div className="gdlr-room-info">
+                                    <i className="fa fa-check-square-o icon-check" />
+                                    <span className="gdlr-head">
+                                      Người tối đa
+                                    </span>
+                                    <span className="gdlr-tail">3</span>
+                                  </div>
+                                  <div className="gdlr-room-info">
+                                    <i className="fa fa-check-square-o icon-check" />
+                                    <span className="gdlr-head">View</span>
+                                    <span className="gdlr-tail">Thành phố</span>
+                                  </div>
+                                  <div className="gdlr-room-info">
+                                    <i className="fa fa-check-square-o icon-check" />
+                                    <span className="gdlr-head">Wifi</span>
+                                    <span className="gdlr-tail">Có</span>
+                                  </div>
+                                  <div className="gdlr-room-price">
+                                    <span className="gdlr-head">Giá từ</span>
+                                    <span className="gdlr-tail">
+                                      {room.price.toLocaleString("vi-VN")} VNĐ /
+                                      Đêm
+                                    </span>
+                                  </div>
+                                  <div className="clear" />
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <h3 className="gdlr-room-title">
-                            <a href="#">Standard Room – Một giường đôi</a>
-                          </h3>
-                          <div className="gdlr-hotel-room-info">
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Giường</span>
-                              <span className="gdlr-tail">1 giường đôi</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Người tối đa</span>
-                              <span className="gdlr-tail">3</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">View</span>
-                              <span className="gdlr-tail">Thành phố</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Wifi</span>
-                              <span className="gdlr-tail">Có</span>
-                            </div>
-                            <div className="gdlr-room-price">
-                              <span className="gdlr-head">Giá từ</span>
-                              <span className="gdlr-tail">
-                                5.000.000 VNĐ / Đêm
-                              </span>
-                            </div>
-                            <div className="clear" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="four columns">
-                      <div className="gdlr-item gdlr-room-item gdlr-classic-room">
-                        <div className="gdlr-ux gdlr-classic-room-ux">
-                          <div className="gdlr-room-thumbnail">
-                            <a href="#">
-                              <img
-                                src="anh\1doi2don.png"
-                                alt=""
-                                width={700}
-                                height={400}
-                              />
-                            </a>
-                          </div>
-                          <h3 className="gdlr-room-title">
-                            <a href="#">
-                              Superior Room – Một giường đôi hoặc hai giường đơn
-                            </a>
-                          </h3>
-                          <div className="gdlr-hotel-room-info">
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Giường</span>
-                              <span className="gdlr-tail">
-                                1 giường đôi / 2 giường đơn
-                              </span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Người tối đa</span>
-                              <span className="gdlr-tail">3</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">View</span>
-                              <span className="gdlr-tail">Thành phố</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Wifi</span>
-                              <span className="gdlr-tail">Có</span>
-                            </div>
-                            <div className="gdlr-room-price">
-                              <span className="gdlr-head">Giá từ</span>
-                              <span className="gdlr-tail">
-                                5.000.000 VNĐ / Đêm
-                              </span>
-                            </div>
-                            <div className="clear" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="four columns">
-                      <div className="gdlr-item gdlr-room-item gdlr-classic-room">
-                        <div className="gdlr-ux gdlr-classic-room-ux">
-                          <div className="gdlr-room-thumbnail">
-                            <a href="#">
-                              <img
-                                src="anh\2don.png"
-                                alt=""
-                                width={700}
-                                height={400}
-                              />
-                            </a>
-                          </div>
-                          <h3 className="gdlr-room-title">
-                            <a href="#">Junior Suite – Hai giường đơn</a>
-                          </h3>
-                          <div className="gdlr-hotel-room-info">
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Giường</span>
-                              <span className="gdlr-tail">2 giường đơn</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Người tối đa</span>
-                              <span className="gdlr-tail">2</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">View</span>
-                              <span className="gdlr-tail">Thành phố</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Wifi</span>
-                              <span className="gdlr-tail">Có</span>
-                            </div>
-                            <div className="gdlr-room-price">
-                              <span className="gdlr-head">Giá từ</span>
-                              <span className="gdlr-tail">
-                                4.500.000 VNĐ / Đêm
-                              </span>
-                            </div>
-                            <div className="clear" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="clear" />
-                    <div className="four columns">
-                      <div className="gdlr-item gdlr-room-item gdlr-classic-room">
-                        <div className="gdlr-ux gdlr-classic-room-ux">
-                          <div className="gdlr-room-thumbnail">
-                            <a href="#">
-                              <img
-                                src="anh\2doi.png"
-                                alt=""
-                                width={700}
-                                height={400}
-                              />
-                            </a>
-                          </div>
-                          <h3 className="gdlr-room-title">
-                            <a href="#">Grand Superior Room – Hai giường đôi</a>
-                          </h3>
-                          <div className="gdlr-hotel-room-info">
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Giường</span>
-                              <span className="gdlr-tail">2 giường đôi</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Người tối đa</span>
-                              <span className="gdlr-tail">6</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">View</span>
-                              <span className="gdlr-tail">Biển</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Wifi</span>
-                              <span className="gdlr-tail">Có</span>
-                            </div>
-                            <div className="gdlr-room-price">
-                              <span className="gdlr-head">Giá từ</span>
-                              <span className="gdlr-tail">
-                                8.000.000 VNĐ / Đêm
-                              </span>
-                            </div>
-                            <div className="clear" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="four columns">
-                      <div className="gdlr-item gdlr-room-item gdlr-classic-room">
-                        <div className="gdlr-ux gdlr-classic-room-ux">
-                          <div className="gdlr-room-thumbnail">
-                            <a href="#">
-                              <img
-                                src="anh\luxury.png"
-                                alt=""
-                                width={700}
-                                height={400}
-                              />
-                            </a>
-                          </div>
-                          <h3 className="gdlr-room-title">
-                            <a href="#">Superior Room – Phòng sang trọng</a>
-                          </h3>
-                          <div className="gdlr-hotel-room-info">
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Giường</span>
-                              <span className="gdlr-tail">2 Giường vua</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Người tối đa</span>
-                              <span className="gdlr-tail">6</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">View</span>
-                              <span className="gdlr-tail">Biển</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Wifi</span>
-                              <span className="gdlr-tail">Có</span>
-                            </div>
-                            <div className="gdlr-room-price">
-                              <span className="gdlr-head">Giá từ</span>
-                              <span className="gdlr-tail">
-                                12.000.000 VNĐ / Đêm
-                              </span>
-                            </div>
-                            <div className="clear" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="four columns">
-                      <div className="gdlr-item gdlr-room-item gdlr-classic-room">
-                        <div className="gdlr-ux gdlr-classic-room-ux">
-                          <div className="gdlr-room-thumbnail">
-                            <a href="#">
-                              <img
-                                src="anh\vua.png"
-                                alt=""
-                                width={700}
-                                height={400}
-                              />
-                            </a>
-                          </div>
-                          <h3 className="gdlr-room-title">
-                            <a href="#">Deluxe Room – Phòng tổng thống</a>
-                          </h3>
-                          <div className="gdlr-hotel-room-info">
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Giường</span>
-                              <span className="gdlr-tail">1 giường vua</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Max People</span>
-                              <span className="gdlr-tail">3</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">View</span>
-                              <span className="gdlr-tail">
-                                Biển ( Mặt monogram)
-                              </span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Wifi</span>
-                              <span className="gdlr-tail">Có</span>
-                            </div>
-                            <div className="gdlr-room-price">
-                              <span className="gdlr-head">Giá từ</span>
-                              <span className="gdlr-tail">
-                                15.000.000 / Đêm
-                              </span>
-                            </div>
-                            <div className="clear" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="clear" />
-                    <div className="four columns">
-                      <div className="gdlr-item gdlr-room-item gdlr-classic-room">
-                        <div className="gdlr-ux gdlr-classic-room-ux">
-                          <div className="gdlr-room-thumbnail">
-                            <a href="#">
-                              <img
-                                src="anh\giadinh.png"
-                                alt=""
-                                width={700}
-                                height={400}
-                              />
-                            </a>
-                          </div>
-                          <h3 className="gdlr-room-title">
-                            <a href="#">Family Special – Phòng gia đình</a>
-                          </h3>
-                          <div className="gdlr-hotel-room-info">
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Giường</span>
-                              <span className="gdlr-tail">5 giường đơn</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Người tối đa</span>
-                              <span className="gdlr-tail">8</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">View</span>
-                              <span className="gdlr-tail">Biển</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Wifi</span>
-                              <span className="gdlr-tail">Có</span>
-                            </div>
-                            <div className="gdlr-room-price">
-                              <span className="gdlr-head">Giá từ</span>
-                              <span className="gdlr-tail">
-                                10.000.000 VNĐ / Đêm
-                              </span>
-                            </div>
-                            <div className="clear" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="four columns">
-                      <div className="gdlr-item gdlr-room-item gdlr-classic-room">
-                        <div className="gdlr-ux gdlr-classic-room-ux">
-                          <div className="gdlr-room-thumbnail">
-                            <a href="#">
-                              <img
-                                src="anh\dacbiet.png"
-                                alt=""
-                                width={700}
-                                height={400}
-                              />
-                            </a>
-                          </div>
-                          <h3 className="gdlr-room-title">
-                            <a href="#">Premium Room – Phòng đặc biệt</a>
-                          </h3>
-                          <div className="gdlr-hotel-room-info">
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Giường</span>
-                              <span className="gdlr-tail">
-                                1 giường đặc biệt
-                              </span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Người tối đa</span>
-                              <span className="gdlr-tail">3</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">View</span>
-                              <span className="gdlr-tail">Ngắm lòng biển</span>
-                            </div>
-                            <div className="gdlr-room-info">
-                              <i className="fa fa-check-square-o icon-check" />
-                              <span className="gdlr-head">Wifi</span>
-                              <span className="gdlr-tail">Có</span>
-                            </div>
-                            <div className="gdlr-room-price">
-                              <span className="gdlr-head">Giá từ</span>
-                              <span className="gdlr-tail">
-                                20.000.000 VNĐ / Đêm
-                              </span>
-                            </div>
-                            <div className="clear" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                          {(index + 1) % 3 === 0 && <div className="clear" />}
+                        </React.Fragment>
+                      );
+                    })}
                     <div className="clear" />
                   </div>
                 </div>
