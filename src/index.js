@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PrivateRoute from "./components/auth/PrivateRoute";
 import Home from "./Home";
 import Room from "./components/Page/Room";
 import Booking from "./components/Page/Booking/Booking1";
@@ -27,10 +28,22 @@ root.render(
           <Route path="/facility" element={<Facility />} />
           <Route path="/room" element={<Room />} />
           <Route path="/room/:id" element={<DetailRoom />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/booking2" element={<Booking2 />} />
-          <Route path="/booking3" element={<Booking3 />} />
-          <Route path="/booking4" element={<Booking4 />} />
+          <Route
+            path="/booking"
+            element={<PrivateRoute element={<Booking />} />}
+          />
+          <Route
+            path="/booking2"
+            element={<PrivateRoute element={<Booking2 />} />}
+          />
+          <Route
+            path="/booking3"
+            element={<PrivateRoute element={<Booking3 />} />}
+          />
+          <Route
+            path="/booking4"
+            element={<PrivateRoute element={<Booking4 />} />}
+          />
           <Route path="/blog" element={<Blog />} />
           <Route path="/product" element={<Product />} />
           <Route path="/sign-up" element={<SignUp />} />

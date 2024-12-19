@@ -7,8 +7,8 @@ function Header() {
   const navigate = useNavigate();
   const token = Cookies.get("token");
   const handleLogout = async () => {
-    Cookies.remove("token");
-    Cookies.remove("Auth");
+    Cookies.remove("token", { path: "/" });
+    Cookies.remove("Auth", { path: "/" });
 
     try {
       const response = await axios.get("http://127.0.0.1:8000/api/logout", {
@@ -24,14 +24,7 @@ function Header() {
         showConfirmButton: false,
         timer: 1500
       });
-      Cookies.set("Auth", JSON.stringify(response.data.Auth), {
-        expires: 30,
-        path: "/"
-      });
-      Cookies.set("token", response.data.token, {
-        expires: 30,
-        path: "/"
-      });
+      
       setTimeout(() => {
         navigate("/");
       }, 1500);
