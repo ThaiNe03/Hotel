@@ -256,6 +256,7 @@ function Booking() {
     // </div>
 
     <div>
+    
       <div className="gdlr-page-title-wrapper">
         <div className="gdlr-page-title-overlay" />
         <div className="gdlr-page-title-container container">

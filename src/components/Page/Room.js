@@ -2,9 +2,11 @@
 
 import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Room() {
+  const navigate = useNavigate();
   const [listRoom, setListRoom] = useState([]);
   const fetchDataRoom = async () => {
     try {
@@ -22,14 +24,47 @@ function Room() {
   useEffect(() => {
     fetchDataRoom();
   }, []);
+  const handleDetailRoom = (id) => {
+    navigate(`/room/${id}`);
+  };
   return (
     <div>
+    <div
+      className="gdlr-page-title-wrapper"
+      style={{
+        backgroundImage: 'url(/frontend/anh/bgrTitle.png)',
+        //backgroundSize: 'cover',
+        backgroundSize: '1518px 226px',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        width: '100%',
+        //height: '100vh',
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        
+      }}
+    >
+    <div
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      //height: '100%',
+      backgroundColor: 'rgba(16, 16, 16, 0.5)',  // Lớp phủ màu nâu mờ
+      zIndex: 0,  // Đảm bảo lớp phủ dưới nội dung văn bản
+    }}
+    />
       <div className="gdlr-page-title-wrapper">
         <div className="gdlr-page-title-overlay" />
         <div className="gdlr-page-title-container container">
           <h1 className="gdlr-page-title">Phòng</h1>
           <span className="gdlr-page-caption">Tất cả đều có tại đây</span>
         </div>
+      </div>
       </div>
       <div id="gdlr-header-substitute"></div>
 
@@ -48,7 +83,7 @@ function Room() {
                       console.log(room);
                       return (
                         <React.Fragment key={index}>
-                          <div className="four columns">
+                          <div className="four columns" onClick={() => {handleDetailRoom(room.id)}}>
                             <div className="gdlr-item gdlr-room-item gdlr-classic-room">
                               <div className="gdlr-ux gdlr-classic-room-ux">
                                 <div className="gdlr-room-thumbnail">
