@@ -3,16 +3,13 @@
 function Facility() {
   return (
     <div>
-    <div
-      className="gdlr-page-title-wrapper"
+    <div className="gdlr-page-title-wrapper"
       style={{
         backgroundImage: 'url(/frontend/anh/bgrTitle.png)',
-        //backgroundSize: 'cover',
         backgroundSize: '1518px 226px',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         width: '100%',
-        //height: '100vh',
         position: 'relative',
         display: 'flex',
         justifyContent: 'center',
@@ -20,17 +17,7 @@ function Facility() {
         textAlign: 'center',
       }}
     >
-    <div
-    style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      //height: '100%',
-      backgroundColor: 'rgba(34, 34, 34, 0.5)',  // Lớp phủ màu nâu mờ
-      zIndex: 0,  // Đảm bảo lớp phủ dưới nội dung văn bản
-    }}
-    />
+    <div style={{position: 'absolute',top: 0,left: 0,width: '100%',backgroundColor: 'rgba(34, 34, 34, 0.5)',zIndex: 0,}}/>
       <div className="gdlr-page-title-overlay" />
       <div className="gdlr-page-title-container container">
         <h1 className="gdlr-page-title" >

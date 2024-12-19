@@ -21,7 +21,21 @@ function Product() {
     fetchDataRoom();
   }, []);
   return (
-    <div>
+    <div><div className="gdlr-page-title-wrapper"
+    style={{
+      backgroundImage: 'url(/frontend/anh/bgrTitle.png)',
+      backgroundSize: '1518px 226px',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      width: '100%',
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+    }}
+  >
+  <div style={{position: 'absolute',top: 0,left: 0,width: '100%',backgroundColor: 'rgba(34, 34, 34, 0.5)',zIndex: 0,}}/>
       <div className="gdlr-page-title-wrapper">
         <div className="gdlr-page-title-overlay" />
         <div className="gdlr-page-title-container container">
@@ -29,6 +43,7 @@ function Product() {
             Vietnam's leading experienced restaurant
           </h1>
         </div>
+      </div>
       </div>
       <div id="gdlr-header-substitute"></div>
       <div className="content-wrapper">

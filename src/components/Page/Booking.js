@@ -258,9 +258,41 @@ function Booking() {
     <div>
     
       <div className="gdlr-page-title-wrapper">
+      <div>
+      <div
+            className="gdlr-page-title-wrapper"
+            style={{
+              backgroundImage: 'url(/frontend/anh/bgrTitle.png)',
+              //backgroundSize: 'cover',
+              backgroundSize: '1518px 226px',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              width: '100%',
+              //height: '100vh',
+              position: 'relative',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+              
+            }}
+          >
+          <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            //height: '100%',
+            backgroundColor: 'rgba(16, 16, 16, 0.5)',  // Lớp phủ màu nâu mờ
+            zIndex: 0,  // Đảm bảo lớp phủ dưới nội dung văn bản
+          }}
+          />
         <div className="gdlr-page-title-overlay" />
-        <div className="gdlr-page-title-container container">
-          <h1 className="gdlr-page-title">Đặt phòng</h1>
+          <div className="gdlr-page-title-container container">
+            <h1 className="gdlr-page-title">Đặt phòng</h1>
+          </div>
+        </div>
         </div>
       </div>
       <div className="content-wrapper">
