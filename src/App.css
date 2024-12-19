@@ -45,6 +45,74 @@
   object-fit: cover; /* Giữ ảnh tràn đều và không bị méo */
 }
 
+/** File SignUp */
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.signup__container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.signup__container h1 {
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.signup__container h5 {
+  text-align: left;
+  margin: 10px 0 5px;
+  color: #555555;
+}
+
+.input-signup-username,
+.input-signup-password {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.signup__signInButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #307bf4;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup__signInButton:hover {
+  background-color: #0056c1;
+}
+
+.signup__registerButton {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup__registerButton:hover {
+  color: #0056c1;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

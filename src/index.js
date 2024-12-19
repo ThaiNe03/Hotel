@@ -11,6 +11,7 @@ import Blog from "./components/Page/Blog";
 import Product from "./components/Page/Product";
 import Facility from "./components/Page/Facility";
 import DetailRoom from "./components/Page/DetailRoom";
+import SignUp from "./components/Page/Signup";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,7 @@ root.render(
           <Route path="/booking" element={<Booking />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
       </App>
     </Router>
