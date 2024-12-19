@@ -1,6 +1,48 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 function Header() {
+  const navigate = useNavigate();
+  const token = Cookies.get("token");
+  const handleLogout = async () => {
+    Cookies.remove("token");
+    Cookies.remove("Auth");
+
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/logout", {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      });
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Login successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      Cookies.set("Auth", JSON.stringify(response.data.Auth), {
+        expires: 30,
+        path: "/"
+      });
+      Cookies.set("token", response.data.token, {
+        expires: 30,
+        path: "/"
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } catch (error) {
+      Swal.fire({
+        title: "Fails!",
+        text: error.response.data.message,
+        icon: "error"
+      });
+    }
+  };
   return (
     <header id="header">
       <div className="gdlr-header-inner">
@@ -36,6 +78,15 @@ function Header() {
                 <li className="menu-item">
                   <Link to="/product">Menu</Link>
                 </li>
+                {!token ? (
+                  <li className="menu-item">
+                    <Link to="/login">Login</Link>
+                  </li>
+                ) : (
+                  <li className="menu-item" onClick={handleLogout}>
+                    Logout
+                  </li>
+                )}
               </ul>
             </nav>
             <span className="gdlr-menu-search-button-sep">•</span>

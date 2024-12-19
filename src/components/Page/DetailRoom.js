@@ -16,7 +16,6 @@ function DetailRoom() {
           }
         }
       );
-      console.log(response.data[0]);
       setListRoom(response.data[0]);
     } catch (error) {
       console.error(error);

@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    phoneNumber: ""
   });
 
   const handleChange = (e) => {
@@ -16,10 +19,56 @@ const SignUp = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Thêm logic xác thực hoặc gửi dữ liệu
-    console.log(formData);
+    if (
+      formData.username === "" ||
+      formData.email === "" ||
+      formData.password === "" ||
+      formData.phoneNumber === ""
+    ) {
+      Swal.fire({
+        title: "Please fill in all fields!",
+        icon: "warning"
+      });
+
+      return;
+    }
+
+    const formDataNew = new FormData();
+    formDataNew.append("email", formData.email);
+    formDataNew.append("password", formData.password);
+    formDataNew.append("name", formData.username);
+    formDataNew.append("phone", formData.phoneNumber);
+
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/register",
+        formDataNew,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Accept: "application/json"
+          }
+        }
+      );
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: response.data[0],
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
+    } catch (error) {
+      Swal.fire({
+        title: "Fails!",
+        text: error.response.data.message,
+        icon: "error"
+      });
+    }
   };
 
   return (
@@ -51,12 +100,12 @@ const SignUp = () => {
             value={formData.password}
             onChange={handleChange}
           />
-          <h5>Confirm Password</h5>
+          <h5>Phone Number</h5>
           <input
-            type="password"
-            name="confirmPassword"
+            type="text"
+            name="phoneNumber"
             className="input-signup-password"
-            value={formData.confirmPassword}
+            value={formData.phoneNumber}
             onChange={handleChange}
           />
           <button type="submit" className="signup__signInButton">

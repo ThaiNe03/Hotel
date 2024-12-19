@@ -1,23 +1,73 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import Cookies from "js-cookie";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
-    password: "",
+    password: ""
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Thêm logic xác thực đăng nhập
+    if (formData.username === "" || formData.password === "") {
+      Swal.fire({
+        title: "Please fill in all fields!",
+        icon: "warning"
+      });
+
+      return;
+    }
+    const formDataNew = new FormData();
+    formDataNew.append("email", formData.username);
+    formDataNew.append("password", formData.password);
+
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/login",
+        formDataNew,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Accept: "application/json"
+          }
+        }
+      );
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Login successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      Cookies.set('Auth', JSON.stringify(response.data.Auth), {
+        expires: 30,
+        path: '/',
+      });
+      Cookies.set('token', response.data.token, {
+        expires: 30,
+        path: '/',
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } catch (error) {
+      Swal.fire({
+        title: "Fails!",
+        text: error.response.data.message,
+        icon: "error"
+      });
+    }
   };
 
   return (

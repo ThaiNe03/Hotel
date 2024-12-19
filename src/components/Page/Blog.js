@@ -11,7 +11,6 @@ function Blog() {
           Accept: "application/json"
         }
       });
-      console.log(response.data);
       setListRoom(response.data);
     } catch (error) {
       console.error(error);
@@ -44,7 +43,6 @@ function Blog() {
                       <div className="blog-item-wrapper">
                         <div className="blog-item-holder">
                           {listRoom.map((room, index) => {
-                            console.log(room);
                             return (
                               <div className="gdlr-item gdlr-blog-full">
                                 <div className="gdlr-ux gdlr-blog-full-ux">

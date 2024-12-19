@@ -6,7 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Room from "./components/Page/Room";
-import Booking from "./components/Page/Booking";
+import Booking from "./components/Page/Booking/Booking1";
+import Booking2 from "./components/Page/Booking/Booking2";
+import Booking3 from "./components/Page/Booking/Booking3";
+import Booking4 from "./components/Page/Booking/Booking4";
 import Blog from "./components/Page/Blog";
 import Product from "./components/Page/Product";
 import Facility from "./components/Page/Facility";
@@ -25,11 +28,13 @@ root.render(
           <Route path="/room" element={<Room />} />
           <Route path="/room/:id" element={<DetailRoom />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/booking2" element={<Booking2 />} />
+          <Route path="/booking3" element={<Booking3 />} />
+          <Route path="/booking4" element={<Booking4 />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/product" element={<Product />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-
         </Routes>
       </App>
     </Router>

@@ -181,6 +181,12 @@
   color: #0056c1;
 }
 
+.gdlr-medium-room-ux {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

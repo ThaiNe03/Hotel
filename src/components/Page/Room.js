@@ -15,7 +15,6 @@ function Room() {
           Accept: "application/json"
         }
       });
-      console.log(response.data);
       setListRoom(response.data);
     } catch (error) {
       console.error(error);
@@ -50,7 +49,6 @@ function Room() {
                   <div className="room-item-holder ">
                     <div className="clear" />
                     {listRoom.map((room, index) => {
-                      console.log(room);
                       return (
                         <React.Fragment key={index}>
                           <div className="four columns" onClick={() => {handleDetailRoom(room.id)}}>
