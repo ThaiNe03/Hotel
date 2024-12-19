@@ -16,13 +16,13 @@ function Home() {
         loop
       >
         <SwiperSlide>
-          <img src="/frontend/anh/1doi.png" alt="Slide 1" />
+          <img src="/frontend/anh/slide1.jpg" alt="Slide 1" />
+          </SwiperSlide>
+        <SwiperSlide>
+          <img src="/frontend/anh/hoboi.png" alt="Slide 2" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/frontend/anh/1doi.png" alt="Slide 2" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="/frontend/anh/1doi.png" alt="Slide 3" />
+          <img src="/frontend/anh/nhahang.png" alt="Slide 3" />
         </SwiperSlide>
       </Swiper>
       <div className="content-wrapper">
@@ -367,7 +367,7 @@ function Home() {
                       <div className="gdlr-item gdlr-column-service-item gdlr-type-2">
                         <div className="column-service-image">
                           <img
-                            src="anh\letan.png"
+                            src="/frontend/anh/letan.png"
                             alt=""
                             width={500}
                             height={257}
@@ -394,7 +394,7 @@ function Home() {
                       <div className="gdlr-item gdlr-column-service-item gdlr-type-2">
                         <div className="column-service-image">
                           <img
-                            src="anh\spa.png"
+                            src="/frontend/anh/spa.png"
                             alt=""
                             width={500}
                             height={257}
@@ -420,7 +420,7 @@ function Home() {
                       <div className="gdlr-item gdlr-column-service-item gdlr-type-2">
                         <div className="column-service-image">
                           <img
-                            src="anh\gym.png"
+                            src="/frontend/anh/gym.png"
                             alt=""
                             width={500}
                             height={257}
@@ -452,7 +452,7 @@ function Home() {
                 id="gdlr-parallax-wrapper-1"
                 data-bgspeed="0.1"
                 style={{
-                  backgroundImage: 'url("anh/duoi1.png")',
+                  backgroundImage: 'url("/frontend/anh/duoi1.png")',
                   paddingTop: "80px",
                   paddingBottom: "10px"
                 }}
@@ -472,7 +472,7 @@ function Home() {
                     </div>
                     <a
                       className="gdlr-item-title-link"
-                      href="http://172.25.186.232:5501/room-classic-3-columns.html"
+                      href="#"
                     >
                       Xem tất cả phòng tại đây
                       <i className="fa fa-long-arrow-right icon-long-arrow-right" />
@@ -675,7 +675,7 @@ function Home() {
                 id="gdlr-parallax-wrapper-2"
                 data-bgspeed="0.1"
                 style={{
-                  backgroundImage: 'url("anh/duoi2.png")',
+                  backgroundImage: 'url("/frontend/anh/duoi2.png")',
                   paddingTop: "160px",
                   paddingBottom: "110px"
                 }}
@@ -875,7 +875,7 @@ function Home() {
                       <div className="gallery-column six columns">
                         <div className="gallery-item">
                           <img
-                            src="anh\tb1.png"
+                            src="frontend\anh\tb1.png"
                             alt=""
                             width={400}
                             height={400}
@@ -885,7 +885,7 @@ function Home() {
                       <div className="gallery-column three columns">
                         <div className="gallery-item">
                           <img
-                            src="anh\tb2.png"
+                            src="frontend\anh\tb2.png"
                             alt=""
                             width={400}
                             height={400}
@@ -895,7 +895,7 @@ function Home() {
                       <div className="gallery-column three columns">
                         <div className="gallery-item">
                           <img
-                            src="anh\tb3.png"
+                            src="frontend\anh\tb3.png"
                             alt=""
                             width={400}
                             height={400}
@@ -905,7 +905,7 @@ function Home() {
                       <div className="gallery-column three columns">
                         <div className="gallery-item">
                           <img
-                            src="anh\tb4.png"
+                            src="frontend\anh\tb4.png"
                             alt=""
                             width={400}
                             height={400}
@@ -915,7 +915,7 @@ function Home() {
                       <div className="gallery-column three columns">
                         <div className="gallery-item">
                           <img
-                            src="anh\tb5.png"
+                            src="frontend\anh\tb5.png"
                             alt=""
                             width={400}
                             height={400}
@@ -926,7 +926,7 @@ function Home() {
                       <div className="gallery-column three columns">
                         <div className="gallery-item">
                           <img
-                            src="anh\tb6.png"
+                            src="frontend\anh\tb6.png"
                             alt=""
                             width={400}
                             height={400}
@@ -936,7 +936,7 @@ function Home() {
                       <div className="gallery-column three columns">
                         <div className="gallery-item">
                           <img
-                            src="anh\tb7.png"
+                            src="frontend\anh\tb7.png"
                             alt=""
                             width={400}
                             height={400}
@@ -946,7 +946,7 @@ function Home() {
                       <div className="gallery-column three columns">
                         <div className="gallery-item">
                           <img
-                            src="anh\tb8.png"
+                            src="frontend\anh\tb8.png"
                             alt=""
                             width={400}
                             height={400}
@@ -956,7 +956,7 @@ function Home() {
                       <div className="gallery-column three columns">
                         <div className="gallery-item">
                           <img
-                            src="anh\tb9.png"
+                            src="frontend\anh\tb9.png"
                             alt=""
                             width={400}
                             height={400}

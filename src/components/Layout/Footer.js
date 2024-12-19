@@ -143,7 +143,7 @@ function Footer() {
             <h3 className="gdlr-widget-title">Ngoài ra</h3>
             <div className="clear" />
             <div className="textwidget">
-              <img src="anh\logo.png" alt="" />
+              <img src="/frontend/anh/logo.png" alt="" />
               <div className="clear" />
               <div className="gdlr-space" style={{ marginTop: "20px" }} />
               Hotel Shilla 249, Dongho-ro, Jung-gu, Seoul 04605 Korea Copyright

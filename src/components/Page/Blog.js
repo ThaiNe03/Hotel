@@ -22,13 +22,31 @@ function Blog() {
 
   return (
     <div>
-      <div className="gdlr-page-title-wrapper">
-        <div className="gdlr-page-title-overlay" />
-        <div className="gdlr-page-title-container container">
-          <h1 className="gdlr-page-title">Vui chơi - Ăn uống - Giải trí</h1>
-          <span className="gdlr-page-caption">
-            Cùng Nhà hàng, Quầy bar &amp; Lounge
-          </span>
+      <div>
+      <div className="gdlr-page-title-wrapper"
+      style={{
+        backgroundImage: 'url(/frontend/anh/bgrTitle.png)',
+        backgroundSize: '1518px 226px',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        width: '100%',
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+      }}
+    >
+    <div style={{position: 'absolute',top: 0,left: 0,width: '100%',backgroundColor: 'rgba(34, 34, 34, 0.5)',zIndex: 0,}}/>
+        <div className="gdlr-page-title-wrapper">
+          <div className="gdlr-page-title-overlay" />
+          <div className="gdlr-page-title-container container">
+            <h1 className="gdlr-page-title">Vui chơi - Ăn uống - Giải trí</h1>
+            <span className="gdlr-page-caption">
+              Cùng Nhà hàng, Quầy bar &amp; Lounge
+            </span>
+          </div>
+        </div>
         </div>
       </div>
       {/* is search */}

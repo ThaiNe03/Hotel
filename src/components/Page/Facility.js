@@ -3,21 +3,35 @@
 function Facility() {
   return (
     <div>
-      <div className="gdlr-page-title-wrapper">
-        <div className="gdlr-page-title-overlay" />
-        <div className="gdlr-page-title-container container">
-          <h1 className="gdlr-page-title">
-            Kỳ nghỉ dưỡng giữa thiên nhiên tươi đẹp của Đà Nẵng
-          </h1>
-          <span className="gdlr-page-caption">
-            Đắm mình trong bể bơi thư giãn, thưởng thức một vài ly cocktail nhẹ
-            nhàng với khung cảnh biển xanh bất tận mở ra trước mắt.
-          </span>
-          <span className="gdlr-page-caption">
-            Khởi đầu ngày mới tràn đầy sức sống tại phòng tập gym và tái tạo
-            năng lượng tại khu spa, xông hơi.
-          </span>
-        </div>
+    <div className="gdlr-page-title-wrapper"
+      style={{
+        backgroundImage: 'url(/frontend/anh/bgrTitle.png)',
+        backgroundSize: '1518px 226px',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        width: '100%',
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+      }}
+    >
+    <div style={{position: 'absolute',top: 0,left: 0,width: '100%',backgroundColor: 'rgba(34, 34, 34, 0.5)',zIndex: 0,}}/>
+      <div className="gdlr-page-title-overlay" />
+      <div className="gdlr-page-title-container container">
+        <h1 className="gdlr-page-title" >
+          Kỳ nghỉ dưỡng giữa thiên nhiên tươi đẹp của Đà Nẵng
+        </h1>
+        <span className="gdlr-page-caption">
+          Đắm mình trong bể bơi thư giãn, thưởng thức một vài ly cocktail nhẹ
+          nhàng với khung cảnh biển xanh bất tận mở ra trước mắt.
+        </span>
+        <span className="gdlr-page-caption">
+          Khởi đầu ngày mới tràn đầy sức sống tại phòng tập gym và tái tạo
+          năng lượng tại khu spa, xông hơi.
+        </span>
+      </div>
       </div>
       {/* is search */}
       <div className="content-wrapper">
@@ -89,13 +103,13 @@ function Facility() {
                 id="gdlr-parallax-wrapper-1"
                 data-bgspeed="0.2"
                 style={{
-                  backgroundImage: 'url("anhcsvc.png")',
+                  backgroundImage: 'url("frontend\anhcsvc.png")',
                   paddingTop: "90px",
                   paddingBottom: "50px"
                 }}
               >
                 <div>
-                  <img src="anh\csvc.png" />
+                  <img src="frontend\anh\csvc.png" />
                 </div>
                 <div className="clear" />
               </div>
@@ -111,7 +125,7 @@ function Facility() {
                     <div className="gdlr-frame frame-type-none">
                       <div className="gdlr-image-link-shortcode">
                         <img
-                          src="anh\nvu.png"
+                          src="frontend\anh\nvu.png"
                           alt=""
                           width={250}
                           height={625}
