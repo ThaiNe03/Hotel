@@ -27,6 +27,23 @@
 .App-link {
   color: #61dafb;
 }
+/* File: Home.js */
+.swiper {
+  width: 100%; /* Chiều rộng full */
+  height: 100vh; /* Chiều cao full màn hình */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  width: 100%; /* Đảm bảo ảnh full chiều rộng */
+  height: 100%; /* Đảm bảo ảnh full chiều cao */
+  object-fit: cover; /* Giữ ảnh tràn đều và không bị méo */
+}
 
 @keyframes App-logo-spin {
   from {
